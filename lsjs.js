@@ -156,7 +156,6 @@ var define;
 				_inject(expandedId, dependentId, cb, scriptText);
 			} else if (storedModule === undefined || storedModule === null) {
 				_getModule(url, function(_url, scriptSrc, ts) {
-					var entry = {url: _url, timestamp: ts};
 					loaded[_url] = ts;
 					storage.set("loaded!"+window.location.pathname, loaded);
 					storage.set(_url, {src: scriptSrc, timestamp: ts});
@@ -585,7 +584,7 @@ var define;
 				cfg.baseUrl = _normalize(window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/')) + '/'+ cfg.baseUrl);
 			}
 		}
-	};
+	}
 
 	lsjs = function(config, dependencies, callback) {
 		if (!isArray(config) && typeof config == "object") {
@@ -629,7 +628,7 @@ var define;
 				_require(dependencies);
 			}
 			queueProcessor();
-		};
+		}
 		if (cfg.timestampUrl) {
 			_getTimestamps(cfg.timestampUrl, function(){
 				callRequire(dependencies, callback);
@@ -662,7 +661,7 @@ var define;
 			setTimeout(poller, 0);
 		};
 		poller();
-	};
+	}
 
 	function processCallbacks() {
 		var savedStack;
@@ -689,7 +688,7 @@ var define;
 				cbiterate(modules[mid].exports, new Iterator(cblist[mid]));
 			}
 		}
-	};
+	}
 
 	function processModules() {
 		var isCircular = function(id, module) {
