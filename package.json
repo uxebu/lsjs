@@ -1,0 +1,17 @@
+{
+  "name": "lsjs",
+  "version": "0.1.0",
+  "description": "An AMD compliant loader that loads modules from various storage backends.",
+  "main": "lsjs.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/uxebu/lsjs.git"
+  },
+  "keywords": [
+    "requirejs",
+    "localstorage"
+  ],
+  "author": "Richard Backhouse",
+  "license": "Dojo Foundation",
+  "readmeFilename": "README.md"
+}
