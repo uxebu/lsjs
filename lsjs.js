@@ -562,15 +562,16 @@ var define;
 				}
 			}
 
-			if (cfg.storageImpl) {
-				storage = cfg.storageImpl;
-				var requiredProps = ["get", "set", "remove", "isSupported"];
-				for (i = 0; i < requiredProps.length; i++) {
-					if (!storage[requiredProps[i]]) {
-						throw new Error("Storage implementation must implement ["+requiredProps[i]+"]");
-					}
-				}
-			}
+      if (cfg.storageImpl) {
+        var requiredProps = ["get", "set", "remove", "isSupported"];
+        for (i = 0; i < requiredProps.length; i++) {
+          if (!storage[requiredProps[i]] || typeof storage[requiredProps[i]] != 'function') {
+            throw new Error("Storage implementation must implement methods ["+requiredProps[i]+"]");
+          }
+        }
+      } else {
+        throw new Error('Storage implementation required! Try `storageImpl: new LocalStorageStorage()` in your lsjs setup');
+      }
 
 			if (cfg.usesCache) {
 				for (i = 0; i < cfg.usesCache.length; i++) {
