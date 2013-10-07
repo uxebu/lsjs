@@ -563,6 +563,7 @@ var define;
 			}
 
       if (cfg.storageImpl) {
+      	storage = cfg.storageImpl;
         var requiredProps = ["get", "set", "remove", "isSupported"];
         for (i = 0; i < requiredProps.length; i++) {
           if (!storage[requiredProps[i]] || typeof storage[requiredProps[i]] != 'function') {
