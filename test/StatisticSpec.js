@@ -6,7 +6,6 @@ describe('Statistic', function () {
       expect(stats.getDependencies())
           .toEqual(['main.js']);
     });
-
     it('should store two dependencies', function () {
       var stats = new Statistic;
       stats.storeDependency('main.js');
@@ -34,10 +33,43 @@ describe('Statistic', function () {
     });
   });
 
-
-  describe('getDependencies()', function () {
-
+  describe('storeDependencies()', function () {
+    it('should store one dependency', function() {
+      var stats = new Statistic;
+      var dependencies = ['main.js'];
+      stats.storeDependencies(dependencies);
+      expect(stats.getDependencies())
+        .toEqual(dependencies);
+    });
+    it('should store multiple dependencies', function() {
+      var stats = new Statistic;
+      var dependencies = ['main.js', 'test.js'];
+      stats.storeDependencies(dependencies);
+      expect(stats.getDependencies())
+        .toEqual(dependencies);
+    });
+    it('should store no depenydenc', function() {
+      var stats = new Statistic;
+      var dependencies = [];
+      stats.storeDependencies(dependencies);
+      expect(stats.getDependencies())
+        .toEqual(dependencies);
+    });
+    it('should store many dependencies', function() {
+      var stats = new Statistic;
+      var dependencies = ['test1', 'test2', 'test3', 'test4', 'test5'];
+      stats.storeDependencies(dependencies);
+      expect(stats.getDependencies())
+        .toEqual(dependencies);
+    });
+    it('should check if dependency already exists', function() {
+      var stats = new Statistic;
+      var dependencies = ['test1', 'test2', 'test3', 'test4', 'test5'];
+      stats.storeDependencies(dependencies);
+      stats.storeDependencies(dependencies);
+      expect(stats.getDependencies())
+        .toEqual(dependencies);
+    });
   });
-
 });
 
