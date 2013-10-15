@@ -17,6 +17,5 @@ Statistic.prototype = {
 
   getDependencies: function () {
     return this.dependencies;
-
   }
 };
