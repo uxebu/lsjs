@@ -612,10 +612,13 @@ var define;
 			}
 		}, function(error){});
 
-		if (!isArray(dependencies)) {
-			callback = dependencies;
-			dependencies = [];
-		}
+    if (!isArray(dependencies)) {
+      callback = dependencies;
+      dependencies = [];
+    } else {
+      cfg.statistic.storeDependencies(dependencies);
+      cfg.statistic.storeBaseUrl(cfg.baseUrl);
+    }
 		function callRequire(dependencies, callback) {
 			for (var i = 0; i < dependencies.length; i++) {
 				if (dependencies[i] !== 'exports' && dependencies[i] != 'module' && dependencies[i] !== 'require') {
