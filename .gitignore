@@ -5,3 +5,15 @@ clientdb.xml
 .project
 .settings/
 .classpath
+.idea/
+.idea/.name
+.idea/codeStyleSettings.xml
+.idea/encodings.xml
+.idea/lsjs.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/scopes/scope_settings.xml
+.idea/vcs.xml
+.idea/workspace.xml
+test.html
+test/specRunner.html
