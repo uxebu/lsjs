@@ -47,9 +47,9 @@ var define;
 
 	var opts = Object.prototype.toString;
 
-	function isFunction(it) { return opts.call(it) === "[object Function]"; };
-	function isArray(it) { return opts.call(it) === "[object Array]"; };
-	function isString(it) { return (typeof it == "string" || it instanceof String); };
+	function isFunction(it) { return opts.call(it) === "[object Function]"; }
+	function isArray(it) { return opts.call(it) === "[object Array]"; }
+	function isString(it) { return (typeof it == "string" || it instanceof String); }
 
 	function _getCurrentId() {
 		return moduleStack.length > 0 ? moduleStack[moduleStack.length-1].id : "";
@@ -72,10 +72,10 @@ var define;
 			}
 		}
 		return segments.join('/');
-	};
+	}
 
 	function _expand(path) {
-		var isRelative = path.search(/^\./) === -1 ? false : true;
+		var isRelative = path.search(/^\./) !== -1;
 		if (isRelative) {
 			var pkg;
 			if ((pkg = pkgs[_getCurrentId()])) {
@@ -86,7 +86,7 @@ var define;
 			path = _normalize(path);
 		}
 		return path;
-	};
+	}
 
 	function _idToUrl(path) {
 		var segments = path.split("/");
@@ -113,13 +113,13 @@ var define;
 		}
 		path = _normalize(path);
 		return path;
-	};
+	}
 
 	function fireZazlLoadEvent() {
 		var evt = document.createEvent('Events');
 		evt.initEvent('zazlload', true, false);
 		document.documentElement.dispatchEvent(evt);
-	};
+	}
 
 	function _loadModule(id, cb, scriptText) {
 		var expandedId = _expand(id);
@@ -164,7 +164,7 @@ var define;
 			} else {
 				_inject(expandedId, dependentId, cb, storedModule.src);
 			}
-		};
+		}
 		if (cfg.forceLoad || url in reload) {
 			storage.remove(url, function(){
 				_load();
@@ -177,7 +177,7 @@ var define;
 				_load();
 			});
 		}
-	};
+	}
 
 	function _inject(moduleId, dependentId, cb, scriptSrc) {
 		var module = modules[moduleId];
@@ -199,7 +199,7 @@ var define;
 				fireZazlLoadEvent();
 			}
 		});
-	};
+	}
 
 	function _getModule(url, cb) {
 		var xhr = new XMLHttpRequest();
@@ -214,7 +214,7 @@ var define;
 			}
 		};
 		xhr.send(null);
-	};
+	}
 
 	function _loadModuleDependencies(id, cb) {
 		var m = modules[id];
@@ -292,7 +292,7 @@ var define;
 			}
 		};
 		iterate(new Iterator(m.dependencies));
-	};
+	}
 
 	function _loadPlugin(pluginName, pluginModuleName, cb) {
 		_loadModule(pluginName, function(plugin){
@@ -333,7 +333,7 @@ var define;
 			};
 			plugin.load(pluginModuleName, req, load, cfg);
 		});
-	};
+	}
 
 	function _createRequire(id) {
 		var req = function(dependencies, callback) {
@@ -363,8 +363,7 @@ var define;
 			}
 		};
 		req.toUrl = function(moduleResource) {
-			var url = _idToUrl(_expand(moduleResource));
-			return url;
+			return _idToUrl(_expand(moduleResource));
 		};
 		req.defined = function(moduleName) {
 			return _expand(moduleName) in modules;
@@ -391,7 +390,7 @@ var define;
 			return false;
 		};
 		return req;
-	};
+	}
 
 	function _getTimestamps(timestampUrl, cb) {
 		var xhr = new XMLHttpRequest();
@@ -421,7 +420,7 @@ var define;
 			current.push({url: url, timestamp: cachets[url]});
 		}
 		xhr.send(JSON.stringify(current));
-	};
+	}
 
 	function _getLastModified(url, cb) {
 		var xhr = new XMLHttpRequest();
@@ -436,7 +435,7 @@ var define;
 			}
 		};
 		xhr.send(null);
-	};
+	}
 
 	function _storeCache() {
 		var storedCache = {};
@@ -444,7 +443,7 @@ var define;
 			storedCache[url] = {value: cache[url], timestamp: cachets[url]};
 		}
 		storage.set("cache!"+window.location.pathname, storedCache);
-	};
+	}
 
 	define = function (id, dependencies, factory) {
 		var simpleCJS = false;
