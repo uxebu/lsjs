@@ -739,7 +739,7 @@ var define;
 			}
 		}
 		return allLoaded;
-	};
+	}
 
 	function processStrands() {
 		function findCircRefs(id, seen, scanned) {
@@ -785,7 +785,7 @@ var define;
 		for (var id in strands) {
 			strands[id] = findCircRefs(id, [], {});
 		}
-	};
+	}
 
 	function processQueues() {
 		try {
@@ -812,5 +812,5 @@ var define;
 			allLoaded = true;
 		}
 		return allLoaded;
-	};
+	}
 }());
