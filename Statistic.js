@@ -3,19 +3,19 @@ function Statistic () {
 }
 
 Statistic.prototype = {
-  storeDependency: function (fileName) {
+  _storeModuleUrl: function (fileName) {
     if (this.dependencies.indexOf(fileName) == -1) {
       this.dependencies.push(fileName);
     }
   },
 
-  storeDependencies: function (dependencies) {
+  storeModuleUrls: function (dependencies) {
     for (var i = 0; i < dependencies.length; i++) {
-      this.storeDependency(dependencies[i]);
+      this._storeModuleUrl(dependencies[i]);
     }
   },
 
-  getDependencies: function () {
+  getModuleUrls: function () {
     return this.dependencies;
   }
 };

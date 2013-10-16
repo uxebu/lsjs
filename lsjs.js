@@ -615,8 +615,8 @@ var define;
       callback = dependencies;
       dependencies = [];
     } else {
-      cfg.statistic.storeDependencies(dependencies);
       cfg.statistic.storeBaseUrl(cfg.baseUrl);
+      cfg.statistic.storeModuleUrls(dependencies);
     }
 		function callRequire(dependencies, callback) {
 			for (var i = 0; i < dependencies.length; i++) {
