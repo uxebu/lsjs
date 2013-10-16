@@ -615,7 +615,6 @@ var define;
       callback = dependencies;
       dependencies = [];
     } else {
-      cfg.statistic.storeBaseUrl(cfg.baseUrl);
       cfg.statistic.storeModuleUrls(dependencies);
     }
 		function callRequire(dependencies, callback) {
