@@ -15,10 +15,10 @@ var define;
 	var cjsVarPrefixRegExp = /^~#/;
 	var pluginRegExp = /.+!/;
 
-	Iterator = function(array) {
+	function Iterator(array) {
 		this.array = array;
 		this.current = 0;
-	};
+	}
 
 	Iterator.prototype = {
 		hasMore: function() {
@@ -482,7 +482,7 @@ var define;
 		jQuery: true
 	};
 
-	_require = function (dependencies, callback) {
+	function _require(dependencies, callback) {
 		if (isString(dependencies)) {
 			var id = dependencies;
 			id = _expand(id);
@@ -530,7 +530,7 @@ var define;
 			iterate(new Iterator(dependencies));
 			return undefined;
 		}
-	};
+	}
 
 	modules["require"] = {};
 	modules["require"].exports = _require;
