@@ -1,58 +1,58 @@
 describe('Statistic', function () {
 
   describe('storeModuleUrls()', function () {
-    it('should store one dependency', function () {
+    it('should store one module URL', function () {
       var stats = new Statistic;
-      var dependencies = ['main.js'];
-      stats.storeModuleUrls(dependencies);
+      var moduleUrls = ['main.js'];
+      stats.storeModuleUrls(moduleUrls);
       expect(stats.getModuleUrls())
-        .toEqual(dependencies);
+        .toEqual(moduleUrls);
     });
-    it('should store multiple dependencies', function () {
+    it('should store multiple module URLs', function () {
       var stats = new Statistic;
-      var dependencies = ['main.js', 'test.js'];
-      stats.storeModuleUrls(dependencies);
+      var moduleUrls = ['main.js', 'test.js'];
+      stats.storeModuleUrls(moduleUrls);
       expect(stats.getModuleUrls())
-        .toEqual(dependencies);
+        .toEqual(moduleUrls);
     });
     it('should work with empty array', function () {
       var stats = new Statistic;
-      var dependencies = [];
-      stats.storeModuleUrls(dependencies);
+      var moduleUrls = [];
+      stats.storeModuleUrls(moduleUrls);
       expect(stats.getModuleUrls())
-        .toEqual(dependencies);
+        .toEqual(moduleUrls);
     });
-    it('should store many dependencies', function () {
+    it('should store many module URLs', function () {
       var stats = new Statistic;
-      var dependencies = ['test1', 'test2', 'test3', 'test4', 'test5'];
-      stats.storeModuleUrls(dependencies);
+      var moduleUrls = ['test1', 'test2', 'test3', 'test4', 'test5'];
+      stats.storeModuleUrls(moduleUrls);
       expect(stats.getModuleUrls())
-        .toEqual(dependencies);
+        .toEqual(moduleUrls);
     });
-    it('should store one dependency ONLY once', function () {
+    it('should store one module URL ONLY once', function () {
       var stats = new Statistic;
-      var dependencies = ['test1'];
-      stats.storeModuleUrls(dependencies);
-      stats.storeModuleUrls(dependencies);
+      var moduleUrls = ['test1'];
+      stats.storeModuleUrls(moduleUrls);
+      stats.storeModuleUrls(moduleUrls);
       expect(stats.getModuleUrls())
-        .toEqual(dependencies);
+        .toEqual(moduleUrls);
     });
-    it('should store each dependency ONLY once', function () {
+    it('should store each module URL ONLY once', function () {
       var stats = new Statistic;
-      var dependencies = ['test1', 'test2', 'test3', 'test4', 'test5'];
-      stats.storeModuleUrls(dependencies);
-      stats.storeModuleUrls(dependencies);
+      var moduleUrls = ['test1', 'test2', 'test3', 'test4', 'test5'];
+      stats.storeModuleUrls(moduleUrls);
+      stats.storeModuleUrls(moduleUrls);
       expect(stats.getModuleUrls())
-        .toEqual(dependencies);
+        .toEqual(moduleUrls);
     });
   });
 
   describe('getModuleUrls()', function () {
-    it('should return all dependencies', function () {
+    it('should return all module URLs', function () {
       var stats = new Statistic;
-      var dependencies = ['test1', 'test2', 'test3', 'test4', 'test5'];
-      stats.storeModuleUrls(dependencies);
-      expect(dependencies).
+      var moduleUrls = ['test1', 'test2', 'test3', 'test4', 'test5'];
+      stats.storeModuleUrls(moduleUrls);
+      expect(moduleUrls).
         toEqual(stats.getModuleUrls());
     });
   });
