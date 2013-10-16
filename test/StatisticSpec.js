@@ -1,37 +1,4 @@
 describe('Statistic', function () {
-  describe('_storeModuleUrl()', function () {
-    it('should store dependency main.js', function () {
-      var stats = new Statistic;
-      stats._storeModuleUrl('main.js');
-      expect(stats.getModuleUrls())
-        .toEqual(['main.js']);
-    });
-    it('should store two dependencies', function () {
-      var stats = new Statistic;
-      stats._storeModuleUrl('main.js');
-      stats._storeModuleUrl('test1.js');
-      expect(stats.getModuleUrls())
-        .toEqual(['main.js', 'test1.js']);
-    });
-    it('should store a dependency once', function () {
-      var stats = new Statistic;
-      stats._storeModuleUrl('main.js');
-      stats._storeModuleUrl('main.js');
-      expect(stats.getModuleUrls())
-        .toEqual(['main.js']);
-    });
-    it('should store every dependency once', function () {
-      var stats = new Statistic;
-      stats._storeModuleUrl('test.js');
-      stats._storeModuleUrl('main.js');
-      stats._storeModuleUrl('test.js');
-      stats._storeModuleUrl('main.js');
-      stats._storeModuleUrl('test2.js');
-      stats._storeModuleUrl('test2.js');
-      expect(stats.getModuleUrls())
-        .toContainEachOnce(['main.js', 'test.js', 'test2.js']);
-    });
-  });
 
   describe('storeModuleUrls()', function () {
     it('should store one dependency', function () {
@@ -48,7 +15,7 @@ describe('Statistic', function () {
       expect(stats.getModuleUrls())
         .toEqual(dependencies);
     });
-    it('should store no depenydenc', function () {
+    it('should work with empty array', function () {
       var stats = new Statistic;
       var dependencies = [];
       stats.storeModuleUrls(dependencies);
@@ -62,7 +29,15 @@ describe('Statistic', function () {
       expect(stats.getModuleUrls())
         .toEqual(dependencies);
     });
-    it('should check if dependency already exists', function () {
+    it('should store one dependency ONLY once', function () {
+      var stats = new Statistic;
+      var dependencies = ['test1'];
+      stats.storeModuleUrls(dependencies);
+      stats.storeModuleUrls(dependencies);
+      expect(stats.getModuleUrls())
+        .toEqual(dependencies);
+    });
+    it('should store each dependency ONLY once', function () {
       var stats = new Statistic;
       var dependencies = ['test1', 'test2', 'test3', 'test4', 'test5'];
       stats.storeModuleUrls(dependencies);
