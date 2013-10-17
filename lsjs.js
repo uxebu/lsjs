@@ -71,6 +71,11 @@ var define;
 				skip--;
 			}
 		}
+    if (skip > 0) {
+      for (var i = 0; i < skip; i++) {
+        segments.unshift('..');
+      }
+    }
 		return segments.join('/');
 	}
 
