@@ -1,21 +1,19 @@
-define(function () {
+define(function() {
 
-function LocalStorageStorage () {
+  function LocalStorageStorage() {
 
-}
-
-
+  }
 
   LocalStorageStorage.prototype = {
 
-    isSupported: function () {
+    isSupported: function() {
       try {
         return 'localStorage' in window && window['localStorage'] !== null;
       } catch (e) {
         return false;
       }
     },
-    remove: function (key, handler, errorHandler) {
+    remove: function(key, handler, errorHandler) {
       try {
         var json = localStorage[key];
         if (json !== undefined && json !== null) {
@@ -39,7 +37,7 @@ function LocalStorageStorage () {
         }
       }
     },
-    get: function (key, handler, errorHandler) {
+    get: function(key, handler, errorHandler) {
       try {
         var json = localStorage[key];
         if (json !== undefined && json !== null) {
@@ -60,7 +58,7 @@ function LocalStorageStorage () {
         }
       }
     },
-    set: function (key, entry, handler, errorHandler) {
+    set: function(key, entry, handler, errorHandler) {
       try {
         localStorage[key] = JSON.stringify(entry);
         if (handler) {
@@ -75,5 +73,6 @@ function LocalStorageStorage () {
       }
     }
   };
+
   return LocalStorageStorage;
 });
