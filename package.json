@@ -14,7 +14,7 @@
   "author": "Richard Backhouse",
   "license": "Dojo Foundation",
   "readmeFilename": "README.md",
-  "dependencies": {
+  "devDependencies": {
     "jasmine-matchers": "~0.2.2"
   }
 }
